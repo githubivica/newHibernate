@@ -14,7 +14,7 @@ public class GlavnaKlasa {
 		
 		Scanner scanner = new Scanner(System.in);
 
-		CrudMetode cm = new CrudMetode(); //4
+		/*CrudMetode cm = new CrudMetode(); //4
 		
 		System.out.print("Unesi marku: ");
 		String marka = scanner.nextLine();
@@ -22,7 +22,7 @@ public class GlavnaKlasa {
 		System.out.print("\nUnesi zemlju: ");
 		String zemlja = scanner.nextLine();
 		
-		cm.ubaciMarku(marka, zemlja);
+		cm.ubaciMarku(marka, zemlja);*/
 		
 		/*System.out.print("Unesite id marke: ");
 		int idMarke = Integer.parseInt(scanner.nextLine());
@@ -32,14 +32,33 @@ public class GlavnaKlasa {
 		
 		cm.azurirajZemlju(idMarke, zemlja);*/
 		
-		System.out.print("Unesite id marke: ");
+		/*System.out.print("Unesite id marke: ");
 		int idMarke = Integer.parseInt(scanner.nextLine());
-		cm.obrisiMarku(idMarke);
+		cm.obrisiMarku(idMarke);*/
 		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		
+			User user = new User();
+			
+			
+			Session sesija = sf.openSession();
+			sesija.beginTransaction(); //pocinje transakciju
+			try {
+				
+				sesija.getTransaction().commit();	//komituje ako uspe
+				System.out.println("Uspesno ubaceno");
+			} catch (Exception e){
+				sesija.getTransaction().rollback();	//rollback ako ne uspe
+				System.out.println("Neuspesno ubaceno");
+			}
+			finally {
+				sesija.close();
+			}
+			
+			
+		scanner.close();	
+		}
 		
-		scanner.close();
-		
-	}
+	
 
 }

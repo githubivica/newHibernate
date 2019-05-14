@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity		//uvek treba dodati u xml fajlu
@@ -23,6 +24,10 @@ public class Marka {
 	
 	@Embedded
 	private Adresa adresa;	//posto je private mora geter i seter
+	
+	@ManyToOne
+	private User user;
+	
 	
 	public Adresa getAdresa() {
 		return adresa;
