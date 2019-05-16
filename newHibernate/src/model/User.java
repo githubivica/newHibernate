@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,13 +21,15 @@ public class User {
 		private int idUser;
 		private String ime;
 		private String prezime;
+		
 		@ElementCollection(fetch = FetchType.LAZY)
 		private List<Adresa> listaAdresa = new ArrayList<Adresa>();
 		
 		@OneToOne
 		private Marka marka;
 		
-		@OneToMany
+		@OneToMany(cascade=CascadeType.ALL)  //automatski ubacuje marka tako da ne treba
+											//u main sesija.save(marka);
 		private List<Marka> marke = new ArrayList<Marka>();
 
 

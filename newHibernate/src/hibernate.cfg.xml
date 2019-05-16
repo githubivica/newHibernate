@@ -30,6 +30,9 @@
 
 <!-- Names the annotated entity class, mapping, navodimo samo one klase koje hocemo, npr entity model.Marka-->
 <mapping class="model.Marka"/>
+<mapping class="model.User"/>
+<mapping class="model.Operater"/>
+<mapping class="model.Administrator"/>
 
 </session-factory>
 
